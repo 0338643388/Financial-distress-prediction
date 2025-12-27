@@ -19,17 +19,32 @@ st.set_page_config(
 # ---------------------------------------------------------
 st.markdown("""
 <style>
+    /* Tiêu đề chính */
     .main-header {font-size: 28px; font-weight: 700; color: #1E3A8A;}
-    .sub-header {font-size: 20px; font-weight: 600; color: #4B5563;}
-    .card {padding: 20px; border-radius: 10px; background-color: #F3F4F6; margin-bottom: 20px;}
-    .metric-box {text-align: center; padding: 10px; background: white; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);}
+    
+    /* Thẻ Card: Tự động điều chỉnh màu theo theme */
+    .card {
+        padding: 20px; 
+        border-radius: 10px; 
+        background-color: rgba(128, 128, 128, 0.1); /* Dùng màu trong suốt nhẹ */
+        border: 1px solid rgba(128, 128, 128, 0.2);
+        margin-bottom: 20px;
+        color: inherit; /* Tự động lấy màu chữ của theme (Trắng ở Dark, Đen ở Light) */
+    }
+
+    /* Nếu bạn muốn giữ nền sáng cố định, phải fix chữ màu tối */
+    .card-light-fixed {
+        padding: 20px; 
+        border-radius: 10px; 
+        background-color: #F3F4F6; 
+        color: #1F2937; /* Bắt buộc chữ màu tối */
+        margin-bottom: 20px;
+    }
+
     .risk-high {color: #DC2626; font-weight: bold; font-size: 24px;}
     .risk-low {color: #059669; font-weight: bold; font-size: 24px;}
 </style>
 """, unsafe_allow_html=True)
-
-st.markdown("<div class='main-header'>📉 Hệ thống Dự báo Kiệt quệ Tài chính Doanh nghiệp Sản xuất</div>", unsafe_allow_html=True)
-st.markdown("---")
 
 # ---------------------------------------------------------
 # 3. HÀM LOAD MODEL
@@ -235,5 +250,6 @@ if submitted:
 
 else:
     st.info("👈 Vui lòng nhập dữ liệu tài chính ở thanh bên trái và nhấn **Dự báo Ngay**.")
+
 
 
