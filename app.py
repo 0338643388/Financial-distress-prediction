@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import joblib
 import numpy as np
+import os 
 
 # ---------------------------------------------------------
 # 1. CẤU HÌNH TRANG
@@ -35,20 +36,21 @@ st.markdown("---")
 # ---------------------------------------------------------
 @st.cache_resource
 def load_prediction_model(model_path):
+    # Kiểm tra sự tồn tại của file trước
+    if not os.path.exists(model_path):
+        st.error(f"LỖI: File '{model_path}' không tồn tại trong thư mục hiện tại: {os.getcwd()}")
+        return None
+    
     try:
         model = joblib.load(model_path)
         return model
     except Exception as e:
-        st.error(f"Không thể tải mô hình từ đường dẫn: {model_path}. Vui lòng kiểm tra file.")
+        # Hiển thị lỗi chi tiết nếu file có tồn tại nhưng load thất bại
+        st.error(f"Lỗi khi giải nén mô hình: {e}")
         return None
 
-# file model
 MODEL_PATH = "best_rf_model.pkl" 
-model = None
-try:
-    model = load_prediction_model(MODEL_PATH)
-except:
-    pass
+model = load_prediction_model(MODEL_PATH)
 
 if model is None:
     st.warning(f"⚠️ Chưa tìm thấy file mô hình `{MODEL_PATH}`. Ứng dụng đang chạy ở chế độ DEMO giao diện.")
