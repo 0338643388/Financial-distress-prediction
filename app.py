@@ -17,16 +17,16 @@ st.set_page_config(
 # ---------------------------------------------------------
 # 2. CSS & GIAO DIỆN
 # ---------------------------------------------------------
-# st.markdown("""
-# <style>
-#     .main-header {font-size: 28px; font-weight: 700; color: #1E3A8A;}
-#     .sub-header {font-size: 20px; font-weight: 600; color: #4B5563;}
-#     .card {padding: 20px; border-radius: 10px; background-color: #F3F4F6; margin-bottom: 20px;}
-#     .metric-box {text-align: center; padding: 10px; background: white; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);}
-#     .risk-high {color: #DC2626; font-weight: bold; font-size: 24px;}
-#     .risk-low {color: #059669; font-weight: bold; font-size: 24px;}
-# </style>
-# """, unsafe_allow_html=True)
+st.markdown("""
+<style>
+    .main-header {font-size: 28px; font-weight: 700; color: #1E3A8A;}
+    .sub-header {font-size: 20px; font-weight: 600; color: #4B5563;}
+    .card {padding: 20px; border-radius: 10px; background-color: #F3F4F6; margin-bottom: 20px;}
+    .metric-box {text-align: center; padding: 10px; background: white; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);}
+    .risk-high {color: #DC2626; font-weight: bold; font-size: 24px;}
+    .risk-low {color: #059669; font-weight: bold; font-size: 24px;}
+</style>
+""", unsafe_allow_html=True)
 
 st.markdown("<div class='main-header'>📉 Hệ thống Dự báo Kiệt quệ Tài chính Doanh nghiệp Sản xuất</div>", unsafe_allow_html=True)
 st.markdown("---")
@@ -235,4 +235,5 @@ if submitted:
 
 else:
     st.info("👈 Vui lòng nhập dữ liệu tài chính ở thanh bên trái và nhấn **Dự báo Ngay**.")
+
 
