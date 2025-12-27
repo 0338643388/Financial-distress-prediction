@@ -19,30 +19,34 @@ st.set_page_config(
 # ---------------------------------------------------------
 st.markdown("""
 <style>
-    /* Tiêu đề chính */
-    .main-header {font-size: 28px; font-weight: 700; color: #1E3A8A;}
-    
-    /* Thẻ Card: Tự động điều chỉnh màu theo theme */
+    /* 1. Màu tiêu đề chính (Tự thích nghi) */
+    .main-header {
+        font-size: 28px; 
+        font-weight: 700; 
+        color: var(--text-color); /* Tự đổi Đen/Trắng theo Theme */
+    }
+
+    /* 2. Thẻ Card thông minh */
     .card {
         padding: 20px; 
         border-radius: 10px; 
-        background-color: rgba(128, 128, 128, 0.1); /* Dùng màu trong suốt nhẹ */
+        margin-bottom: 20px;
+        /* Dùng màu nền phụ của Streamlit (Xám nhạt ở Light, Xám đậm ở Dark) */
+        background-color: var(--secondary-background-color); 
+        /* Bắt buộc màu chữ lấy theo màu hệ thống */
+        color: var(--text-color);
+        /* Thêm viền mờ để nổi bật card */
         border: 1px solid rgba(128, 128, 128, 0.2);
-        margin-bottom: 20px;
-        color: inherit; /* Tự động lấy màu chữ của theme (Trắng ở Dark, Đen ở Light) */
     }
 
-    /* Nếu bạn muốn giữ nền sáng cố định, phải fix chữ màu tối */
-    .card-light-fixed {
-        padding: 20px; 
-        border-radius: 10px; 
-        background-color: #F3F4F6; 
-        color: #1F2937; /* Bắt buộc chữ màu tối */
-        margin-bottom: 20px;
-    }
-
+    /* 3. Màu chữ cảnh báo (Giữ nguyên vì Đỏ/Xanh nổi trên cả 2 nền) */
     .risk-high {color: #DC2626; font-weight: bold; font-size: 24px;}
     .risk-low {color: #059669; font-weight: bold; font-size: 24px;}
+    
+    /* Đảm bảo các đoạn văn trong card cũng nhận màu hệ thống */
+    .card p, .card b {
+        color: var(--text-color) !important;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -250,6 +254,7 @@ if submitted:
 
 else:
     st.info("👈 Vui lòng nhập dữ liệu tài chính ở thanh bên trái và nhấn **Dự báo Ngay**.")
+
 
 
 
